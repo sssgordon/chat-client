@@ -51,7 +51,7 @@ export default class Rooms extends Component {
       .send({ name: value }) // the send ALWAYS takes an object, which will be the body of the request -> message="value"
       .then(res => console.log("response test", res));
 
-    this.setState({ value: "" }); //NOT WORKING! solved -> must include value attribute in input element; see below
+    this.setState({ value: "" }); //NOT WORKING! solved -> must include value attribute in input JSX element; see below
   };
 
   reset = () => {
