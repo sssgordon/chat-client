@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import superagent from "superagent";
 import { Link } from "react-router-dom";
+import { url } from "./constants";
 
+//gotta change url to
 export default class Rooms extends Component {
   state = {
     rooms: [], // what message has arrived
@@ -11,7 +13,7 @@ export default class Rooms extends Component {
   // if it's in the render method -> then it's gonna connect many times
   // we want it to connect 1 time -> componentDidMount
   //BUT we want the stream to be accessible in the full app, not just in the componentDidMount function; so we write it separately as the class' own property (doesn't need const)
-  stream = new EventSource("http://localhost:4000/stream"); // EventSource is built in in JS; argument is where we connect to the stream
+  stream = new EventSource(`${url}/stream`); // EventSource is built in in JS; argument is where we connect to the stream
 
   componentDidMount = () => {
     // something that happens one time should be put here: showing messages
@@ -44,10 +46,10 @@ export default class Rooms extends Component {
 
     const { value } = this.state;
 
-    const url = "http://localhost:4000/room";
+    const postUrl = `${url}/room`;
 
     superagent
-      .post(url)
+      .post(postUrl)
       .send({ name: value }) // the send ALWAYS takes an object, which will be the body of the request -> message="value"
       .then(res => console.log("response test", res));
 
