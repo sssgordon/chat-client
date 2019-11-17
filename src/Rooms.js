@@ -6,8 +6,8 @@ import { url } from "./constants";
 //gotta change url to
 export default class Rooms extends Component {
   state = {
-    rooms: [], // what message has arrived
-    value: "" // what message is someone writing right now
+    rooms: [], // what rooms has arrived
+    value: "" // what room name is someone writing right now
   };
   // where do we connect to the stream?
   // if it's in the render method -> then it's gonna connect many times
